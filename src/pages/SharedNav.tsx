@@ -14,10 +14,10 @@ const SharedNav = () => {
           <SvgComponent />
         </Link>
 
-        {links.map((link) => {
+        {links.map((link, index) => {
           const { label, href } = link
           return (
-            <li>
+            <li key={index}>
               <Link
                 className='hover:cursor-pointer'
                 to={href}
