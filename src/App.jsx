@@ -23,7 +23,7 @@ import TagManager from 'react-gtm-module'
  * on component mount
  */
 const tagManagerArgs = {
-  gtmId: 'G-9SVXN53H8H',
+  gtmId: 'G-Q100MPXMDM',
 }
 TagManager.initialize(tagManagerArgs)
 function AnalyticsTracker() {

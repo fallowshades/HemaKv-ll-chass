@@ -33,6 +33,9 @@ https://api.themoviedb.org/3/discover/movie?api_key=${tmdbAPI}&include_adult=tru
 })
 
 import { bookState, mockApiResponse } from '../../utils/types'
+
+export interface BookWithNull {}
+
 const initialState: bookState = {
   books: [],
   isloading: false,
@@ -41,7 +44,30 @@ const initialState: bookState = {
 const bookSlice = createSlice({
   name: 'books',
   initialState,
-  reducers: {},
+  reducers: {
+    addBookFavorite: (state, action) => {
+      const newBook = action.payload
+      const existingBook = state.books.fint(
+        (i) => i.favoriteID === newBook.favoriteID
+      )
+
+      if (existingBook) {
+        existingBook.amount += newBook.amount
+      }
+
+      localStorage.setItem('bookFavorites', JSON.stringify(state))
+    },
+    clearFavorites: () => {
+      localStorage.setItem('bookFavorites', JSON.stringify(initialState))
+      return initialState
+    },
+    removeFavoriteBook: (state, action) => {
+      const favoriteBookID = action.payload
+      const existingBook = state.books.find(
+        (i) => i.favoriteID !== favoriteBookID
+      )
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchBooks.pending, (state) => {
