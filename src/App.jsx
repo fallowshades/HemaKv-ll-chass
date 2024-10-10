@@ -17,9 +17,42 @@ const router = createBrowserRouter([
     ],
   },
 ])
+import TagManager from 'react-gtm-module'
+
+/**
+ * on component mount
+ */
+const tagManagerArgs = {
+  gtmId: 'G-9SVXN53H8H',
+}
+TagManager.initialize(tagManagerArgs)
+function AnalyticsTracker() {
+  const location = useLocation()
+
+  useEffect(() => {
+    //manually believe the lib normally get anyway
+    // window.dataLayer.push({
+    //   event: 'pageview',
+    //   page: {
+    //     url: location,
+    //     title: title,
+    //   },
+    // })
+    ReactGA.send({
+      hitType: 'pageview',
+      page: location.pathname + location.search,
+    })
+  }, [location])
+
+  return null // This component doesn't render anything
+}
 
 const App = () => {
-  return <RouterProvider router={router} />
+  return (
+    <RouterProvider router={router}>
+      <AnalyticsTracker />
+    </RouterProvider>
+  )
 }
 
 export default App
