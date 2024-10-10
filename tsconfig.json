@@ -7,11 +7,7 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
 
-    "esModuleInterop": true,
-    "baseUrl": "./src", // Ensure the baseUrl is set correctly if you're using absolute imports
-    "paths": {
-      "@/*": ["src/*"]
-    }
+    "esModuleInterop": true
   },
   "include": ["vite.config.ts"]
 }
