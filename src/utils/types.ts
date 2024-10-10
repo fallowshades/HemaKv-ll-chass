@@ -2,7 +2,7 @@ type MovieTHEMOVIADE = {
   page: number
   total_pages: number
   total_results: number
-  results: books[]
+  results: BookItem[]
 }
 
 export type bookState = {
@@ -11,7 +11,7 @@ export type bookState = {
   error: any
 }
 
-export type books = {
+export type BookItem = {
   adult: false
   backdrop_path: string
   genre_ids: Number[]
