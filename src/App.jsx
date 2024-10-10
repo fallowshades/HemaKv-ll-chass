@@ -6,8 +6,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <SharedNav />,
-  },
-  {
+
     children: [
       { index: true, element: <AllBooks /> },
       { path: ':id', element: <SingleBook /> },
