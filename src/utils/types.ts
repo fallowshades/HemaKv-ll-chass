@@ -11,7 +11,7 @@ export type bookState = {
   error: any
 }
 
-type books = {
+export type books = {
   adult: false
   backdrop_path: string
   genre_ids: Number[]

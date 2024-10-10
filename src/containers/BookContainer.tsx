@@ -16,7 +16,12 @@ const BookContainer = () => {
   return (
     <div>
       {books.results.map((book) => {
-        return <BookCard key={book.id} />
+        return (
+          <BookCard
+            key={book.id}
+            item={book}
+          />
+        )
       })}
     </div>
   )
