@@ -46,7 +46,7 @@ function AnalyticsTracker() {
 
   return null // This component doesn't render anything
 }
-
+import reportWebVitals from './reportWebVitals'
 const App = () => {
   return (
     <RouterProvider router={router}>
@@ -54,5 +54,5 @@ const App = () => {
     </RouterProvider>
   )
 }
-
+reportWebVitals(console.log) // Logs to console
 export default App

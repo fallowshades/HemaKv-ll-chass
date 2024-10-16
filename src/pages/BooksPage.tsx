@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../lib/hooks'
 import { addBookFavorite, removeFavoriteBook } from '../lib/features/books'
 import BookSearchList from '../containers/BookSearchList'
+import MetaTags from '../seo/MetaTags'
 const BooksPage = () => {
   const dispatch = useAppDispatch()
   const { favBook } = useAppSelector((state) => state.booksState)
@@ -25,6 +26,12 @@ const BooksPage = () => {
   console.log(favBook)
   return (
     <div>
+      <MetaTags
+        title='favorite batch of books'
+        description='can add or remove books. if you dont find any search for them'
+        url='http://localhost:5173/books'
+        canonicalUrl='http://localhost:5173/books'
+      />
       <h2>Favorite Books</h2>
       <ul>
         {favBook.map((book) => (
