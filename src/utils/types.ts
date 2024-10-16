@@ -9,6 +9,8 @@ export type bookState = {
   books: any
   isloading: boolean
   error: any
+  //''
+  favBook: any
 }
 
 export type BookItem = {

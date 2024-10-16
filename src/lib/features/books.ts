@@ -38,6 +38,7 @@ export interface BookWithNull {}
 
 const initialState: bookState = {
   books: [],
+  favBook: [],
   isloading: false,
   error: undefined,
 }
@@ -47,12 +48,12 @@ const bookSlice = createSlice({
   reducers: {
     addBookFavorite: (state, action) => {
       const newBook = action.payload
-      const existingBook = state.books.find(
+      const existingBook = state.favBook.find(
         (i) => i.favoriteID === newBook.favoriteID
       )
-
-      if (existingBook) {
-        existingBook.amount += newBook.amount
+      console.log('add')
+      if (!existingBook) {
+        state.favBook.push(newBook)
       }
 
       localStorage.setItem('bookFavorites', JSON.stringify(state))
@@ -63,8 +64,8 @@ const bookSlice = createSlice({
     },
     removeFavoriteBook: (state, action) => {
       const favoriteBookID = action.payload
-      const existingBook = state.books.find(
-        (i) => i.favoriteID !== favoriteBookID
+      state.favBook = state.favBook.filter(
+        (book) => book.favoriteID !== favoriteBookID
       )
     },
   },

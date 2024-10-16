@@ -11,7 +11,7 @@ const SingleBook = () => {
   let clickedProduct = Array.isArray(books)
     ? books.find((item) => item.id == params.id)
     : null
-
+  console.log(clickedProduct)
   const { adult, id } = clickedProduct || {}
 
   const dispatch = useAppDispatch()
@@ -27,9 +27,9 @@ const SingleBook = () => {
 
   if (!clickedProduct) {
     return (
-      <footer>
+      <footer className='grid'>
         <Link to='/'>back</Link>
-        <button onClick={addToFavorites}></button>
+        <button onClick={addToFavorites}>click to add to favorites</button>
       </footer>
     )
   }
@@ -42,7 +42,7 @@ const SingleBook = () => {
       <div>{adult}</div>
       <footer>
         <Link to='/'>back</Link>
-        <button onClick={addToFavorites}></button>
+        <button onClick={addToFavorites}>click to add to favorites</button>
       </footer>
     </div>
   )
