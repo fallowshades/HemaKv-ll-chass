@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom'
 import { RootState } from '../lib/store'
 import { useAppDispatch, useAppSelector } from '../lib/hooks'
 import { addBookFavorite } from '../lib/features/books'
+import MetaTags from '../seo/MetaTags'
 const SingleBook = () => {
   const { books } = useAppSelector((state: RootState) => state.booksState)
 
@@ -36,6 +37,12 @@ const SingleBook = () => {
 
   return (
     <div>
+      <MetaTags
+        title='single book'
+        description='can add and just see some details. nothing much really'
+        url='http://localhost:5173/books'
+        canonicalUrl='http://localhost:5173/books'
+      />
       <header>
         <h2>{id}</h2>
       </header>
