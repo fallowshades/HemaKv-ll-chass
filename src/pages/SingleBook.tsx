@@ -40,8 +40,8 @@ const SingleBook = () => {
       <MetaTags
         title='single book'
         description='can add and just see some details. nothing much really'
-        url='http://localhost:5173/books'
-        canonicalUrl='http://localhost:5173/books'
+        url={`http://localhost:5173/books${id}`}
+        canonicalUrl={`http://localhost:5173/${id}`}
       />
       <header>
         <h2>{id}</h2>
