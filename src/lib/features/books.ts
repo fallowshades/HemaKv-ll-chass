@@ -47,7 +47,7 @@ const bookSlice = createSlice({
   reducers: {
     addBookFavorite: (state, action) => {
       const newBook = action.payload
-      const existingBook = state.books.fint(
+      const existingBook = state.books.find(
         (i) => i.favoriteID === newBook.favoriteID
       )
 
@@ -75,7 +75,13 @@ const bookSlice = createSlice({
       })
       .addCase(fetchBooks.fulfilled, (state, action) => {
         state.isloading = false
-        state.books = action.payload
+        //state.books = action.payload
+
+        if (action.payload && Array.isArray(action.payload.results)) {
+          state.books = action.payload.results
+        } else {
+          state.books = [] // Fallback to empty array if data is missing or invalid
+        }
       })
       .addCase(fetchBooks.rejected, (state, action) => {
         state.isloading = false
@@ -83,5 +89,7 @@ const bookSlice = createSlice({
       })
   },
 })
+export const { addBookFavorite, clearFavorites, removeFavoriteBook } =
+  bookSlice.actions
 
 export default bookSlice.reducer
