@@ -9,7 +9,7 @@ const SharedNav = () => {
   console.log(favBook)
   return (
     <>
-      <nav className='flex items-center justify-between bg-slate-200'>
+      <nav className='flex items-center justify-between bg-slate-600'>
         <div>
           <button className='border-white border py-3 px-8 rounded-lg hover:scale-105 flex'>
             <span className=' pl-2 text-white'>{favBook?.length}</span>
@@ -28,7 +28,7 @@ const SharedNav = () => {
           return (
             <li key={index}>
               <Link
-                className='hover:cursor-pointer'
+                className='hover:cursor-pointer text-white'
                 to={href}
               >
                 {label}
