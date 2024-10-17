@@ -15,21 +15,49 @@ const tmdbAPI = '711ff86aba647821e529c801d4ff3403'
 //      `https://api.themoviedb.org/3/guest_session/guest_session_id/rated/movies?language=en-US&page=1&sort_by=created_at.asc&${tmdbAPI}`,
 
 export const fetchBooks = createAsyncThunk('books/fetchBooks', async () => {
-  const options = { method: 'GET', headers: { accept: 'application/json' } }
+  let response = { ok: {}, json: () => {} }
 
-  const moc = mockApiResponse
-  const response =
-    moc ||
-    (await fetch(
-      `
-https://api.themoviedb.org/3/discover/movie?api_key=${tmdbAPI}&include_adult=true`,
+  if (true) {
+    const options = { method: 'GET', headers: { accept: 'application/json' } }
+
+    const moc = mockApiResponse
+    const response =
+      moc ||
+      (await fetch(
+        `
+  https://api.themoviedb.org/3/discover/movie?api_key=${tmdbAPI}&include_adult=true`,
+        options
+      )
+        .then((response) => response.json())
+        .then((response) => console.log(response))
+        .catch((err) => console.error(err)))
+    console.log(response)
+    return response
+  }
+  if (false) {
+    const options = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization:
+          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MTFmZjg2YWJhNjQ3ODIxZTUyOWM4MDFkNGZmMzQwMyIsIm5iZiI6MTcyOTEwNjY3OC4wNzM0NCwic3ViIjoiNjcwN2E2ZTY2NzE4MDEyZmMyMzNhYzY1Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.ESFEzMS3wU3VUN0G3fdJRFogjC3eQmsw49xGA9J59sQ',
+      },
+    }
+
+    response = await fetch(
+      'https://api.themoviedb.org/3/movie/changes?page=1',
       options
     )
-      .then((response) => response.json())
-      .then((response) => console.log(response))
-      .catch((err) => console.error(err)))
-
-  return response
+    // .then((response) => response.json())
+    // .then((response) => console.log(response))
+    // .catch((err) => console.error(err))
+    if (!response!.ok) {
+      throw new Error('Failed to fetch data')
+    }
+    const data = await response.json() //meh may it be
+    return data
+  }
+  return null
 })
 
 import { bookState, mockApiResponse } from '../../utils/types'
@@ -77,7 +105,7 @@ const bookSlice = createSlice({
       .addCase(fetchBooks.fulfilled, (state, action) => {
         state.isloading = false
         //state.books = action.payload
-
+        console.log(action.payload)
         if (action.payload && Array.isArray(action.payload.results)) {
           state.books = action.payload.results
         } else {

@@ -13,7 +13,7 @@ const AllBooks = () => {
       console.log('fetch')
       dispatch(fetchBooks())
     }
-  }, [books, dispatch])
+  }, [dispatch])
   return (
     <div>
       <MetaTags
