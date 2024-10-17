@@ -8,7 +8,13 @@ const BookCard = ({ item }: { item: BookItem }) => {
   return (
     <div>
       <h1>{mocORresponseTitle}</h1>
-      <Link to={`/${id}`}> CLICK</Link>
+      <Link
+        to={`/${id}`}
+        className='text-lg'
+      >
+        {' '}
+        CLICK
+      </Link>
     </div>
   )
 }

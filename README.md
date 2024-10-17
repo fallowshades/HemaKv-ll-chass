@@ -76,8 +76,12 @@ Here's a general overview of the project structure:
 php
 Kopiera kod
 .
-├── public/                 # Static files
+├── public/               # Static files manifest.json, favicon.ico, robots.txt
 ├── src/
+    ├── seo
+    ├──containers
+    ├──lib/
+    ├──utils
 │   ├── components/         # Reusable components
 │   ├── pages/              # Page components
 │   ├── store/              # Redux store setup
@@ -87,6 +91,10 @@ Kopiera kod
 ├── tsconfig.json           # TypeScript configuration
 ├── vite.config.ts          # Vite configuration
 ├── package.json            # Project metadata and scripts
+├── cypress.config.ts
+├──  reportWebVitales.js
+├──
+├──
 └── README.md               # Project documentation
 Tools & Libraries
 React: UI library for building components.

@@ -48,8 +48,18 @@ const SingleBook = () => {
       </header>
       <div>{adult}</div>
       <footer>
-        <Link to='/'>back</Link>
-        <button onClick={addToFavorites}>click to add to favorites</button>
+        <Link
+          to='/'
+          className='text-lg text-green-300'
+        >
+          back
+        </Link>
+        <button
+          onClick={addToFavorites}
+          className='text-lg'
+        >
+          click to add to favorites
+        </button>
       </footer>
     </div>
   )

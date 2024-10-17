@@ -14,8 +14,9 @@ const BookContainer = () => {
   }
 
   console.log(books)
+  //mobile friendly layoout
   return (
-    <div>
+    <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
       {books.map((book) => {
         return (
           <BookCard

@@ -6,7 +6,7 @@ const BookSearchList = () => {
   const [input, setInput] = useState('')
   const { books } = useAppSelector((state) => state.booksState)
   const filteredBooks = books.filter((book) =>
-    book.title.toLowerCase().includes(input.toLowerCase())
+    book.title.toLowerCase().includes(input?.toLowerCase())
   )
 
   function handleSearch(e) {

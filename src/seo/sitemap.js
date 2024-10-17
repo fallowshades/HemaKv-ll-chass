@@ -15,23 +15,41 @@ async function fetchAllProducts() {
 
 export default async function handler(req, res) {
   try {
-    const products = await fetchAllProducts() // Fetch product data
+    const options = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization:
+          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MTFmZjg2YWJhNjQ3ODIxZTUyOWM4MDFkNGZmMzQwMyIsIm5iZiI6MTcyOTEwNjY3OC4wNzM0NCwic3ViIjoiNjcwN2E2ZTY2NzE4MDEyZmMyMzNhYzY1Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.ESFEzMS3wU3VUN0G3fdJRFogjC3eQmsw49xGA9J59sQ',
+      },
+    }
+
+    response = await fetch(
+      'https://api.themoviedb.org/3/movie/changes?page=1',
+      options
+    )
+    // // .then((response) => response.json())
+    // // .then((response) => console.log(response))
+    // // .catch((err) => console.error(err))
+    // if (!response!.ok) {
+    //   throw new Error('Failed to fetch data')
+    // }
+    // const data = await response.json() //meh may it be
 
     // Initialize sitemap stream
     const sitemapStream = new SitemapStream({
-      //hostname: 'https://shop-swart-phi.vercel.app/',
       hostname: 'https:/localhost/',
     })
 
     // Add static URLs
     sitemapStream.write({
       url: '/',
-      changefreq: 'daily',
+      changefreq: 'monthly',
       priority: 1.0,
     })
     sitemapStream.write({
-      url: '/cart',
-      changefreq: 'monthly',
+      url: '/books',
+      changefreq: 'daily',
       priority: 0.7,
     })
 

@@ -17,7 +17,7 @@ const tmdbAPI = '711ff86aba647821e529c801d4ff3403'
 export const fetchBooks = createAsyncThunk('books/fetchBooks', async () => {
   let response = { ok: {}, json: () => {} }
 
-  if (true) {
+  if (false) {
     const options = { method: 'GET', headers: { accept: 'application/json' } }
 
     const moc = mockApiResponse
@@ -34,7 +34,7 @@ export const fetchBooks = createAsyncThunk('books/fetchBooks', async () => {
     console.log(response)
     return response
   }
-  if (false) {
+  if (true) {
     const options = {
       method: 'GET',
       headers: {
